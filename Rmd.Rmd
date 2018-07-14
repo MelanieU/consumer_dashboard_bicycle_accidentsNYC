@@ -1,0 +1,21 @@
+---
+title: "Shiny_tweets"
+output: html_document
+---
+
+## Project description
+Social media not only connects us with the rest of the worls but is also the most powerful medium for marketing. To launch a business successfully, a targeted and eloquent social media presence is not only advantagous but crucial for success. In order to do that, one need to find out where to promote, what to say, and whom to target. Analyzing twitter data, might help.
+
+This project will provide the following information:
+
+1. Where do people live with the most followers?
+2. Where and when do people tweet the most? By region and city.
+3. What are the most popular hashtags?
+
+Features: search by hashtag, by region, by city, followers, following
+
+heatmap: followers vs following
+table: top 10 hashtags in region or city
+map: tweets sorted by hashtags, followers, following (hover over: tweet)
+histogram: tweets per hour
+distribution: tweets per language
