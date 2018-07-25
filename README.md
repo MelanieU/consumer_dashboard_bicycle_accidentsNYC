@@ -4,5 +4,5 @@
 
 #The Shiny App can be accessed via [link](https://melanieu.shinyapps.io/NYC_bike_collisions/)
 
-#I hope you enjoy my analysis and visulaization tools!
+#I hope you enjoy my analysis and visualization tools!
 
