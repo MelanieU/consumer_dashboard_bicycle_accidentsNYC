@@ -1,4 +1,6 @@
 
+## libraries ##
+
 library(lubridate)
 library(stringr)
 library(dplyr)
@@ -10,6 +12,8 @@ library(googleVis)
 library(maps)
 library(ggmap)
 library(shinythemes)
+
+## data manipulation and cleaning ##
 
 bike <- read.csv("./bike.csv", stringsAsFactors = F)
 bike$date = as.Date(bike$date, "%Y-%m-%d")
@@ -29,6 +33,8 @@ bike %>%
          vehicle.type.code.1 = toupper(vehicle.type.code.1)) %>%
   mutate(., vehicle.type.code.1 = gsub('LIVERY VEHICLE','TAXI', x = vehicle.type.code.1)) -> bike_bike
 
+## themes for plotting ##
+
 themes <- theme(
     plot.background = element_rect(
       fill = '#282B30', colour = '#282B30'),
@@ -46,6 +52,8 @@ themes <- theme(
     legend.title = element_text(color = "#ffffff",size = 15),
     text = element_text(size=20),
     legend.key = element_rect(fill = "#282B30", colour = "#282B30"))
+
+## plots ##
 
 bike_bike %>%
   filter(year != 2018 & year != 2012) %>%
