@@ -1,5 +1,8 @@
 
 function(input, output, session) {
+  
+  ## Background tab: line graph ##
+  
   output$total_line <-renderPlot({
     ggplot(bike_line, aes(x = date, y=n)) +
       geom_line(color = "#33ffcc") +
@@ -9,6 +12,7 @@ function(input, output, session) {
       themes
   })
   
+  ## Background tab: area graph ##
   
   total<-reactive({
     validate(
@@ -56,6 +60,8 @@ function(input, output, session) {
   #     scale_fill_manual(values = c("fall" = "#ffcccc", "summer" = "#ffff66", "spring" = "#99ffcc", "winter" = "#ccccff"))
   # })
   
+  ## Background tab: hour slider ##
+  
   output$hour <- renderPlot({
     ggplot(bike_hour, 
       aes(x = HOUR, y = n, group = season, color = season)) + geom_line() +
@@ -68,6 +74,8 @@ function(input, output, session) {
       themes +
       scale_color_manual(values = c("fall" = "#ffcccc", "summer" = "#ffff66", "spring" = "#99ffcc", "winter" = "#ccccff"))
   })
+  
+  ## Explore map tab: maps ## 
   
   output$mymap <- renderLeaflet({
     leaflet(bike_map) %>% 
@@ -85,6 +93,8 @@ function(input, output, session) {
       addCircles(radius = 25, color = "#3300cc")
   })
   
+  ## Explore causes tab: Sankey diagram ##
+  
   output$diagram <- renderGvis({
     Sank <- gvisSankey(bike_combo, from="contributing.factor.vehicle.1", to="vehicle.type.code.1", weight="freq",
                        options=list(title= 'Main Categories and causes',width= 800, height = 520, sankey= "{link: {color: { fill: '#99ffcc' } },
@@ -93,6 +103,8 @@ function(input, output, session) {
     
     return(Sank)
   })
+  
+  ## Explore causes tab: heatmap ##
   
   output$heatmap <- renderPlot({
     ggplot(bike_heatmap, aes(HOUR, contributing.factor.vehicle.1))+
@@ -118,9 +130,13 @@ function(input, output, session) {
            x = "Hour",
            y = "") })
   
+  ## Data table tab: tables ##
+  
     output$table_high <- renderDataTable(high_freq)
     output$table_low <- renderDataTable(low_freq)
-    
+  
+  ## Case study tab: bar plot ##
+  
     output$lanes <-renderPlot({
       ggplot(bike_lanes, aes(x = freq, y = perc)) + geom_col(fill = "#ff4040") + themes +
         labs(x = "Frequency of accidents",
