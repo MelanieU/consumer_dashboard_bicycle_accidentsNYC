@@ -1,7 +1,9 @@
 
-## navigation bar
+
 navbarPage('NYC bicycle accidents', id = "nav", theme = shinytheme("superhero"),
-          
+ 
+           ## Background tab ## 
+           
            tabPanel("Background",
                     wellPanel(fluidRow(h4("Bicycle collisions in NYC: what are the numbers?"), align = "center")),
                     wellPanel(fluidRow(h4("An average of 4400 bicycle were reported each year in NYC between 2013 - 2017"), align = "center"),
@@ -39,6 +41,8 @@ navbarPage('NYC bicycle accidents', id = "nav", theme = shinytheme("superhero"),
                     #                                   selected = "injured")),
                     #          column(7,plotOutput("outcome")))),
            
+           ## Explore Causes tab ###
+           
            tabPanel("Explore Causes",
                     wellPanel(fluidRow(h4("What are the major causes?"), align = "center")),
                     wellPanel(fluidRow(h4("Inattention and Failure to Yield Right-of-way are the most common causes among all types of vehicle drivers"), align = "center"),
@@ -52,6 +56,8 @@ navbarPage('NYC bicycle accidents', id = "nav", theme = shinytheme("superhero"),
                     fluidRow(align = "center", plotOutput("heatmap", width = "70%", height = "500"))),
                     br(),
                     br()),
+           
+           ## Case Study tab ##
            
            tabPanel("Case Study: bike lanes",
                     wellPanel(fluidRow(h4("Can we increase saftey with more bike lanes?"), align = "center")),
@@ -78,6 +84,8 @@ navbarPage('NYC bicycle accidents', id = "nav", theme = shinytheme("superhero"),
                     br(),
                     br()),
            
+           ## Explore Map tab ##
+           
            tabPanel("Explore Map",
                     wellPanel(fluidRow(h4("Explore map displaying locations of all recorded accidents"), align = "center"),
                     fluidRow(leafletOutput("mymap", width = "70%", height = "500"), align = "center")),
@@ -86,6 +94,8 @@ navbarPage('NYC bicycle accidents', id = "nav", theme = shinytheme("superhero"),
                     wellPanel(fluidRow(h4("'Hot Spots' of bicycle accidents (> 10)"), align = "center"),
                     fluidRow(leafletOutput("hot_spots", width = "70%", height = "500"), align = "center")),
                     br()),
+           
+           ## Data Tables tab ##
            
            tabPanel("Data Tables",
                     wellPanel(fluidRow(h4("High frequency and low frequency data tables"), align = "center"),
